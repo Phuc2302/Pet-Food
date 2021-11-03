@@ -1,21 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:petfood/Screens/Welcome/welcome_screen.dart';
-import 'package:petfood/constants.dart';
+import 'package:flutter_catalog/core/store.dart';
+import 'package:flutter_catalog/pages/Welcome/welcome_screen.dart';
+import 'package:flutter_catalog/pages/cart_page.dart';
+import 'package:flutter_catalog/pages/login_page.dart';
+import 'package:flutter_catalog/utils/routes.dart';
+import 'package:flutter_catalog/widgets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
-void main() => runApp(MyApp());
+import 'pages/home_page.dart';
+
+void main() {
+  runApp(
+    VxState(
+      store: MyStore(),
+      child: MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'PET FOOD',
-      theme: ThemeData(
-        primaryColor: kPrimaryColor,
-        scaffoldBackgroundColor: Colors.white,
-      ),
-      home: WelcomeScreen(),
+      themeMode: ThemeMode.light,
+      theme: MyTheme.lightTheme(context),
+      darkTheme: MyTheme.darkTheme(context),
+      // initialRoute: MyRoutes.homeRoute,
+      initialRoute: "/",
+      routes: {
+        // "/": (context) => LoginPage(),
+        "/": (context) => WelcomeScreen(),
+        MyRoutes.homeRoute: (context) => HomePage(),
+        MyRoutes.loginRoute: (context) => LoginPage(),
+        MyRoutes.cartRoute: (context) => CartPage()
+      },
     );
   }
 }

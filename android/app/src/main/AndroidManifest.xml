@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.petfood">
+    package="com.example.flutter_catalog">
    <application
-        android:label="petfood"
+        android:label="flutter_catalog"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
