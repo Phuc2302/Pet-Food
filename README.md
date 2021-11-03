@@ -1,4 +1,4 @@
-# petfood
+# flutter_catalog
 
 A new Flutter project.
 
