@@ -3,12 +3,6 @@ import 'package:flutter_catalog/models/products.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CartModel {
-  // static final cartModel = CartModel._internal();
-
-  // CartModel._internal();
-
-  // factory CartModel() => cartModel;
-
   ProductsModel _product;
 
   // Id của từng sản phẩm (Collection of Id)
@@ -28,16 +22,6 @@ class CartModel {
   // Get total price
   num get totalPrice =>
       items.fold(0, (total, current) => total + current.price);
-
-  // Add item
-  // void add(Item item) {
-  //   _itemsId.add(item.id);
-  // }
-
-  // Remove Item
-  // void remove(Item item) {
-  //   _itemsId.remove(item.id);
-  // }
 }
 
 class AddMutation extends VxMutation<MyStore> {

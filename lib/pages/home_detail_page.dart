@@ -74,7 +74,6 @@ class HomeDetailPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
-                          // "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae architecto deleniti unde. Porro ex blanditiis accusamus earum placeat modi? Ipsa nihil inventore magni iure temporibus, deserunt modi corporis doloremque dolor.",
                           product.desc,
                           style: TextStyle(color: Colors.black),
                         ),
@@ -90,15 +89,3 @@ class HomeDetailPage extends StatelessWidget {
     );
   }
 }
-
-// ElevatedButton(
-//                 onPressed: () {},
-//                 child: Text("Add to cart"),
-//                 style: ButtonStyle(
-//                   backgroundColor:
-//                       MaterialStateProperty.all<Color>(Colors.black87),
-//                   shape: MaterialStateProperty.all(
-//                     StadiumBorder(),
-//                   ),
-//                 ),
-//               ),

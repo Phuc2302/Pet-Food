@@ -3,12 +3,15 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_catalog/core/store.dart';
+import 'package:flutter_catalog/models/cart.dart';
 import 'package:flutter_catalog/models/products.dart';
 import 'package:flutter_catalog/pages/home_detail_page.dart';
 import 'package:flutter_catalog/utils/routes.dart';
 import 'package:flutter_catalog/widgets/drawer.dart';
 import 'package:flutter_catalog/widgets/home_widgets/product_item.dart';
 import 'package:flutter_catalog/widgets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -23,9 +26,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
+    // Future trì hoãn việc tải thông tin sản phẩm đến khi cần
     await Future.delayed(Duration(seconds: 2));
+    // Lấy chuỗi json thô từ file products
     final productsJson =
         await rootBundle.loadString("assets/files/products.json");
+    // Giải mã chuỗi json thô
     final decodeData = jsonDecode(productsJson);
     var productsData = decodeData["products"];
     ProductsModel.items = List.from(productsData)
@@ -36,6 +42,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final _cart = (VxState.store as MyStore).cart;
     return Scaffold(
       backgroundColor: MyTheme.creamColor,
       appBar: AppBar(
@@ -43,10 +50,19 @@ class _HomePageState extends State<HomePage> {
         title: Text("Pet Food"),
         centerTitle: true,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-        backgroundColor: MyTheme.darkBluishColor,
-        child: Icon(CupertinoIcons.cart),
+      floatingActionButton: VxBuilder(
+        mutations: {AddMutation, RemoveMutation},
+        builder: (ctx, _) => FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+          backgroundColor: MyTheme.darkBluishColor,
+          child: Icon(CupertinoIcons.cart),
+        ).badge(
+          color: Vx.red500,
+          size: 22,
+          count: _cart.items.length,
+          textStyle:
+              TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -78,45 +94,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
-// ListView.builder(
-//  itemCount: ProductsModel.items.length,
-//  itemBuilder: (context, index) {
-//    return ItemWidget(
-//      item: ProductsModel.items[index],
-//    );
-//  },
-//)
-
-// Card(
-//   clipBehavior: Clip.antiAlias,
-//   shape: RoundedRectangleBorder(
-//     borderRadius: BorderRadius.circular(10),
-//   ),
-//   child: GridTile(
-//     header: Container(
-//       child: Text(
-//         item.name,
-//         style: TextStyle(color: Colors.white),
-//       ),
-//       padding: const EdgeInsets.all(12),
-//       decoration: BoxDecoration(
-//         color: Colors.deepPurple,
-//       ),
-//     ),
-//     child: Image.network(
-//       item.image,
-//     ),
-//     footer: Container(
-//       child: Text(
-//         item.price.toString(),
-//         style: TextStyle(color: Colors.white),
-//       ),
-//       padding: const EdgeInsets.all(12),
-//       decoration: BoxDecoration(
-//         color: Colors.black54,
-//       ),
-//     ),
-//   ),
-// );

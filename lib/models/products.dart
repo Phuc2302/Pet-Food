@@ -1,10 +1,4 @@
 class ProductsModel {
-  // static final proModel = ProductsModel._internal();
-
-  // ProductsModel._internal();
-
-  // factory ProductsModel() => proModel;
-
   static List<Item> items;
 
   Item getById(int id) =>
@@ -23,6 +17,7 @@ class Item {
 
   Item({this.id, this.name, this.desc, this.price, this.color, this.image});
 
+  // Xây dựng một items mới từ cấu trúc map
   factory Item.fromJon(Map<String, dynamic> json) {
     return Item(
       id: json["id"],
@@ -33,7 +28,7 @@ class Item {
       image: json["image"],
     );
   }
-
+  // Chuyển đổi item (instance into a map)
   toMap() => {
         "id": id,
         "name": name,
