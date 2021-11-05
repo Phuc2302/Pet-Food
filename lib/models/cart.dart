@@ -24,6 +24,9 @@ class CartModel {
       items.fold(0, (total, current) => total + current.price);
 }
 
+// VxMutation dùng để xử lý logic
+// Mọi thứ bên trong hàm perform sẽ được thực thi khi ta tạo một class
+
 class AddMutation extends VxMutation<MyStore> {
   final Item item;
 

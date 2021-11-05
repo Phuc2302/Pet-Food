@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/models/products.dart';
 import 'package:flutter_catalog/widgets/home_widgets/add_to_cart.dart';
-import 'package:flutter_catalog/widgets/themes.dart';
 
 class HomeDetailPage extends StatelessWidget {
   final Item product;
@@ -13,7 +12,7 @@ class HomeDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.transparent),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: Color(0xFF3D82AE),
       bottomNavigationBar: Container(
         color: Colors.white,
         child: ButtonBar(
@@ -36,6 +35,8 @@ class HomeDetailPage extends StatelessWidget {
           ],
         ),
       ),
+      // SafeArea giống padding, sẽ thêm các phần đệm cần thiết giữ cho widget
+      // không bị chặn bởi các rãnh, lỗ, góc tròn.....
       body: SafeArea(
         bottom: false,
         child: Container(
@@ -54,7 +55,7 @@ class HomeDetailPage extends StatelessWidget {
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey[300],
+                    color: Colors.grey[100],
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30),

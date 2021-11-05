@@ -30,6 +30,7 @@ dependencies:
   # google_fonts: ^2.1.0
   velocity_x: ^1.4.1
   flutter_svg: ^0.20.0-nullsafety.3
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:

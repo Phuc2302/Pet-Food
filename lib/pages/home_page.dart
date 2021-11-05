@@ -8,8 +8,10 @@ import 'package:flutter_catalog/models/cart.dart';
 import 'package:flutter_catalog/models/products.dart';
 import 'package:flutter_catalog/pages/home_detail_page.dart';
 import 'package:flutter_catalog/utils/routes.dart';
+import 'package:flutter_catalog/widgets/category.dart';
 import 'package:flutter_catalog/widgets/drawer.dart';
 import 'package:flutter_catalog/widgets/home_widgets/product_item.dart';
+import 'package:flutter_catalog/widgets/slideshow.dart';
 import 'package:flutter_catalog/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -64,31 +66,50 @@ class _HomePageState extends State<HomePage> {
               TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: (ProductsModel.items != null && ProductsModel.items.isNotEmpty)
-            ? GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
-                ),
-                itemCount: ProductsModel.items.length,
-                itemBuilder: (context, index) {
-                  final product = ProductsModel.items[index];
-                  return InkWell(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomeDetailPage(product: product),
+      body: Column(
+        children: [
+          Categories(),
+          Expanded(
+            flex: 1,
+            child: SlideShow(),
+          ),
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: (ProductsModel.items != null &&
+                      ProductsModel.items.isNotEmpty)
+                  ? GridView.builder(
+                      // Xác định lưới
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2, // Số item trên 1 hàng ngang
+                        // Khoảng cách giữa các hàng (các item trong cột dọc)
+                        mainAxisSpacing: 16,
+                        // Khoảng cách giữa các item trong hàng ngang
+                        crossAxisSpacing: 16,
                       ),
+                      itemCount: ProductsModel.items.length,
+                      itemBuilder: (context, index) {
+                        final product = ProductsModel.items[index];
+                        // InkWell sử dụng để thêm hiệu ứng gợn sóng
+                        return InkWell(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  HomeDetailPage(product: product),
+                            ),
+                          ),
+                          child: ProductItem(product: product),
+                        );
+                      })
+                  : Center(
+                      // Hiển thị hình tròn chỉ quá trình chờ đợi trong ứng dụng
+                      child: CircularProgressIndicator(),
                     ),
-                    child: ProductItem(product: product),
-                  );
-                })
-            : Center(
-                child: CircularProgressIndicator(),
-              ),
+            ),
+          ),
+        ],
       ),
       drawer: MyDrawer(),
     );
