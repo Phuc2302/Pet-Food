@@ -33,7 +33,7 @@ class CartPage extends StatelessWidget {
 }
 
 class _CartTotal extends StatelessWidget {
-  // const _CartTotal({Key key}) : super(key: key);
+  const _CartTotal({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +44,7 @@ class _CartTotal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          // VxBuilder dùng để rebuild lại một phần nhỏ của UI khi có sự thay đổi (Mutations)
           VxBuilder(
             mutations: {RemoveMutation},
             builder: (context, _) {
@@ -57,6 +58,7 @@ class _CartTotal extends StatelessWidget {
             width: 140,
             child: ElevatedButton(
               onPressed: () {
+                // Hiển thị một snackBar khi hoàn thành một action
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text("Buying not supported yet."),
@@ -64,8 +66,9 @@ class _CartTotal extends StatelessWidget {
                 );
               },
               style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all(MyTheme.darkCreamColor)),
+                backgroundColor:
+                    MaterialStateProperty.all(MyTheme.darkCreamColor),
+              ),
               child: Text("Buy"),
             ),
           )
@@ -143,6 +146,7 @@ class _CartList extends StatelessWidget {
                                           fontSize: 16.0,
                                         ),
                                       ),
+                                      // Spacer tạo ra 1 khoảng trống để điều chỉnh khoảng cách giữa các Widget con
                                       Spacer(),
                                       IconButton(
                                         onPressed: () =>

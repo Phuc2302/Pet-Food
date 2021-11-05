@@ -14,8 +14,6 @@ class MyDrawer extends StatelessWidget {
 
   get onClicked => null;
 
-  
-
   @override
   Widget build(BuildContext context) {
     var hoverColor;
@@ -61,39 +59,36 @@ class MyDrawer extends StatelessWidget {
     );
   }
 
-
   selectedItem(BuildContext context, int i) {
     Navigator.of(context).pop();
 
     switch (i) {
       case 0:
-         Navigator.of(context).push(MaterialPageRoute(
-           builder: (context) => HomePage (),
-         ));
-         break;
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ));
+        break;
       case 1:
-         Navigator.of(context).push(MaterialPageRoute(
-           builder: (context) => Profile (),
-         ));
-         break;
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Profile(),
+        ));
+        break;
       case 2:
-         Navigator.of(context).push(MaterialPageRoute(
-           builder: (context) => Email (),
-         ));
-         break;      
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Email(),
+        ));
+        break;
     }
   }
 
   // ignore: non_constant_identifier_names
   Widget buildMenuItem({
     String text,
-    IconData icon, 
+    IconData icon,
     Function() onClicked,
-  })
-  {
+  }) {
     final color = Colors.white;
     final hoverColor = Colors.white70;
-
 
     return ListTile(
       leading: Icon(icon, color: color),
