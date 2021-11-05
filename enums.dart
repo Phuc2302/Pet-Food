@@ -1,0 +1,1 @@
+enum Menu { home, favourite, message, profile}

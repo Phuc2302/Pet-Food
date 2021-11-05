@@ -9,6 +9,7 @@ import 'package:flutter_catalog/utils/routes.dart';
 import 'package:flutter_catalog/widgets/drawer.dart';
 import 'package:flutter_catalog/widgets/home_widgets/product_item.dart';
 import 'package:flutter_catalog/widgets/themes.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,12 +17,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool isSearching = false;
+
   @override
   void initState() {
     super.initState();
     loadData();
   }
 
+  
   loadData() async {
     await Future.delayed(Duration(seconds: 2));
     final productsJson =
@@ -40,8 +44,34 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: MyTheme.creamColor,
       appBar: AppBar(
         elevation: 0.0,
-        title: Text("Pet Food"),
+        title: !isSearching ? Text("Pet Food",
+        style : TextStyle (
+          color: Colors.black
+        )
+        ):TextField(decoration: InputDecoration(
+          icon: Icon(Icons.search),
+          hintText: "Search..",
+          hintStyle: TextStyle(color: Colors.black))),
         centerTitle: true,
+        actions: <Widget> [
+          isSearching ?
+          IconButton(
+            icon: Icon(Icons.cancel),
+            onPressed: () {
+              setState(() {
+                this.isSearching = false;
+              });
+            },
+          ) :
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              setState(() {
+                this.isSearching = true;
+              });
+            },
+          )
+        ]
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
@@ -77,6 +107,9 @@ class _HomePageState extends State<HomePage> {
       drawer: MyDrawer(),
     );
   }
+
+  
+
 }
 
 
