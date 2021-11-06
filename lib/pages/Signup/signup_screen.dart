@@ -1,15 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_catalog/pages/Signup/components/body.dart';
-
-// class SignUpScreen extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Body(),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/pages/Login/login_screen.dart';
 import 'package:flutter_catalog/pages/Signup/components/or_divider.dart';
