@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
-      initialRoute: SplashScreen.routeName,
+      initialRoute: "/",
       routes: {
         "/": (context) => WelcomeScreen(),
         MyRoutes.homeRoute: (context) => HomePage(),
@@ -35,6 +35,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class SplashScreen {
-  static var routeName;
-}
+// class SplashScreen {
+//   static var routeName;
+// }

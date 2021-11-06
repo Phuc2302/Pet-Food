@@ -1,10 +1,9 @@
-import 'dart:html';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_catalog/pages/Email.dart';
-import 'package:flutter_catalog/pages/Welcome/Profile.dart';
+import 'package:flutter_catalog/pages/profile/profile.dart';
+import 'package:flutter_catalog/pages/Welcome/welcome_screen.dart';
 import 'package:flutter_catalog/pages/home_page.dart';
+import 'package:flutter_catalog/pages/setting_page.dart';
 
 class MyDrawer extends StatelessWidget {
   var text;
@@ -16,7 +15,7 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var hoverColor;
+    // var hoverColor;
     return Drawer(
       child: Material(
         color: Colors.white,
@@ -35,23 +34,34 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 48),
+            const SizedBox(height: 30),
             buildMenuItem(
               text: 'Home',
               icon: Icons.home,
               onClicked: () => selectedItem(context, 0),
             ),
-            const SizedBox(height: 48),
+            const SizedBox(height: 30),
             buildMenuItem(
               text: 'Profile',
               icon: Icons.people,
               onClicked: () => selectedItem(context, 1),
             ),
+            const SizedBox(height: 30),
+            buildMenuItem(
+              text: 'Setting',
+              icon: Icons.settings,
+              onClicked: () => selectedItem(context, 2),
+            ),
             const SizedBox(height: 48),
             buildMenuItem(
-              text: 'Email',
-              icon: Icons.email,
-              onClicked: () => selectedItem(context, 2),
+              text: "Log out",
+              icon: Icons.logout_outlined,
+              onClicked: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => WelcomeScreen(),
+                ),
+              ),
             ),
           ],
         ),
@@ -75,7 +85,7 @@ class MyDrawer extends StatelessWidget {
         break;
       case 2:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Email(),
+          builder: (context) => SettingPage(),
         ));
         break;
     }
@@ -87,12 +97,12 @@ class MyDrawer extends StatelessWidget {
     IconData icon,
     Function() onClicked,
   }) {
-    final color = Colors.white;
+    final color = Colors.black;
     final hoverColor = Colors.white70;
 
     return ListTile(
-      leading: Icon(icon, color: color),
-      title: Text(text, style: TextStyle(color: color)),
+      leading: Icon(icon, color: color, size: 26),
+      title: Text(text, style: TextStyle(color: color, fontSize: 16)),
       hoverColor: hoverColor,
       onTap: onClicked,
     );

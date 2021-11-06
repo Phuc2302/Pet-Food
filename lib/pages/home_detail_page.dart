@@ -54,6 +54,7 @@ class HomeDetailPage extends StatelessWidget {
               ),
               Expanded(
                 child: Container(
+                  padding: EdgeInsets.only(top: 12.0),
                   decoration: BoxDecoration(
                     color: Colors.grey[100],
                     borderRadius: BorderRadius.only(

@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class ProductsModel {
   static List<Item> items;
 

@@ -30,8 +30,6 @@ dependencies:
   # google_fonts: ^2.1.0
   velocity_x: ^1.4.1
   flutter_svg: ^0.20.0-nullsafety.3
-  # launch email 
-  url_laucher: ^6.0.9
   carousel_slider: ^4.0.0
 
 dev_dependencies:

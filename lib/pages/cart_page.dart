@@ -12,8 +12,12 @@ class CartPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text("Cart"),
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: Colors.deepPurple,
+        title: Text(
+          "Cart",
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
       ),
       body: Padding(
