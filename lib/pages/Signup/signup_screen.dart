@@ -51,10 +51,12 @@ class _SignUpFormValidationState extends State<SignUpScreen> {
               ),
               SizedBox(height: size.height * 0.03),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 45),
+                padding: EdgeInsets.symmetric(horizontal: 40),
                 child: TextFormField(
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14.0),
+                        ),
                         labelText: 'Email',
                         hintText: 'Enter valid email as abc@gmail.com'),
                     validator: MultiValidator([
@@ -64,11 +66,13 @@ class _SignUpFormValidationState extends State<SignUpScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 45.0, right: 45.0, top: 15, bottom: 0),
+                    left: 40.0, right: 40.0, top: 15, bottom: 0),
                 child: TextFormField(
                     obscureText: true,
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14.0),
+                        ),
                         labelText: 'Password',
                         hintText: 'Enter secure password'),
                     validator: MultiValidator([

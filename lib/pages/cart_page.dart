@@ -48,7 +48,6 @@ class _CartTotal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // VxBuilder dùng để rebuild lại một phần nhỏ của UI khi có sự thay đổi (Mutations)
           VxBuilder(
             mutations: {RemoveMutation},
             builder: (context, _) {

@@ -77,7 +77,7 @@ class HomeDetailPage extends StatelessWidget {
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
                           product.desc,
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.black, fontSize: 16),
                         ),
                       ),
                     ],

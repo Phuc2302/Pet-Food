@@ -7,13 +7,16 @@ class SlideShow extends StatelessWidget {
     return ListView(
       children: [
         SizedBox(height: 12.0),
+        // Thanh trượt hình ảnh
         CarouselSlider(
           options: CarouselOptions(
             height: 180.0,
             enlargeCenterPage: true,
+            // Tự động trượt trong một thời gian nhất định
             autoPlay: true,
+            // Xác định đường cong của hình ảnh
             autoPlayCurve: Curves.fastOutSlowIn,
-            enableInfiniteScroll: true,
+            // enableInfiniteScroll: true,
             autoPlayAnimationDuration: Duration(milliseconds: 500),
           ),
           items: [

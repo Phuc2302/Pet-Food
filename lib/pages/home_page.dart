@@ -35,7 +35,6 @@ class _HomePageState extends State<HomePage> {
     // Lấy chuỗi json thô từ file products
     final productsJson =
         await rootBundle.loadString("assets/files/products.json");
-    // Giải mã chuỗi json thô
     final decodeData = jsonDecode(productsJson);
     var productsData = decodeData["products"];
     ProductsModel.items = List.from(productsData)
